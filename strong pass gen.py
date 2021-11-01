@@ -30,15 +30,18 @@ def new_rand():
     # variable for password
     var_pass = ''
 
-    # loop through pass length
-    for x in range(pass_length):
-        # random int between 33 and 126
-        # cast to char
-        # add to empty var_pass
-        var_pass += chr(randint(33, 126))
+    if int(length_entry.get()) < 12:
+        messagebox.showinfo("Error", "A strong Password should be at least 12 characters long!")
+    else:
+        # loop through pass length
+        for x in range(pass_length):
+            # random int between 33 and 126
+            # cast to char
+            # add to empty var_pass
+            var_pass += chr(randint(33, 126))
 
-    # output password to pass_entry
-    pass_entry.insert(0, var_pass)
+        # output password to pass_entry
+        pass_entry.insert(0, var_pass)
 
 
 # copy to clipboard
