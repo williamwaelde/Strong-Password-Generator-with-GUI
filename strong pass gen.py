@@ -5,6 +5,7 @@
 
 # GUI toolkit
 from tkinter import *
+from tkinter import messagebox
 
 # needed for random numbers
 from random import randint
@@ -15,6 +16,7 @@ root.title('Strong Password Generator')
 root.geometry("500x300")
 
 
+# generate new random password
 def new_rand():
     # pass statement to construct a body that does nothing
     # pass
@@ -39,9 +41,16 @@ def new_rand():
     pass_entry.insert(0, var_pass)
 
 
-
+# copy to clipboard
 def clipboard():
-    pass
+    # clear clipboard
+    root.clipboard_clear()
+    # copy to clipboard
+    root.clipboard_append(pass_entry.get())
+
+    # info message
+    messagebox.showinfo("Copied", "Copied to clipboard!")
+
 
 # box for insert length
 lf = LabelFrame(root, text=" How many Characters do you want for the Password? ")
@@ -63,7 +72,7 @@ btn_frame.pack(pady=20)
 button = Button(btn_frame, text="Generate Strong", command=new_rand)
 button.grid(row=0, column=0, padx=10)
 
-clipboard_btn = Button(btn_frame,text="Copy to Clipboard", command=clipboard)
+clipboard_btn = Button(btn_frame, text="Copy to Clipboard", command=clipboard)
 clipboard_btn.grid(row=0, column=1, padx=10)
 
 # start GUI
